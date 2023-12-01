@@ -12,11 +12,11 @@ const RowComponent = ({ todo, onToggle }) => {
         {todo.isComplete ? 'FINISHED' : 'PENDING'}
       </Text>
       <Switch
-        trackColor={{ false: "#C1C1C1", true: "green" }}
-        thumbColor={todo.isComplete ? "green" : "#C1C1C1"}
-        onValueChange={() => onToggle(todo.id)}
-        value={todo.isComplete}
-      />
+  trackColor={{ false: "#C1C1C1", true: "#32C557" }}  
+  thumbColor={todo.isComplete ? "#32C557" : "#C1C1C1"}  
+  onValueChange={() => onToggle(todo.id)}
+  value={todo.isComplete}
+/>
     </View>
   );
 };
