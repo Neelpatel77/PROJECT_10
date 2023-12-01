@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
-import RowComponent from './components/RowComponent'; // Replace with the correct path to your RowComponent file
+import RowComponent from './components/RowComponent';  
 
 let initialTodoList = [];
 
@@ -9,7 +9,7 @@ export default function App() {
   const [taskName, setTaskName] = useState('');
 
   const addTask = (name) => {
-    const newId = todoList.length > 0 ? todoList[todoList.length - 1].id + 1 : 0;
+    const newId = todoList.length > 0 ? todoList[todoList.length - 1].id + 1 : 1;
     const newTask = { id: newId, name: name, isComplete: false };
     setTodoList([...todoList, newTask]);
     setTaskName('');
