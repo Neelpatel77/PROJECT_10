@@ -42,9 +42,9 @@ export default function App() {
       <Text style={styles.title}>{`${item.id} - ${item.name}`}</Text>
       <Text style={styles.status}>{item.isComplete ? 'FINISHED' : 'PENDING'}</Text>
       <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={item.isComplete ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
+        trackColor={{ false: "red", true: "green" }} // Use red for 'PENDING', green for 'FINISHED'
+        thumbColor={item.isComplete ? "green" : "white"} // Match thumb color with text
+        ios_backgroundColor="#C1C1C1"
         onValueChange={() => changeStatus(item.id)}
         value={item.isComplete}
       />
@@ -99,13 +99,15 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   item: {
-    backgroundColor: '#f9c2ff',
+    backgroundColor: 'white',  
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderBottomWidth: 1, // Add a horizontal line
+    borderBottomColor: '#cccccc',  
   },
   title: {
     fontSize: 24,
