@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList, TextInput, TouchableOpacity, Switch, Alert } from 'react-native';
-import { StatusBar } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
+import RowComponent from './components/RowComponent'; // Replace with the correct path to your RowComponent file
 
-// Example data
 let initialTodoList = [];
 
 export default function App() {
@@ -38,17 +37,7 @@ export default function App() {
   };
 
   const renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{`${item.id} - ${item.name}`}</Text>
-      <Text style={styles.status}>{item.isComplete ? 'FINISHED' : 'PENDING'}</Text>
-      <Switch
-        trackColor={{ false: "red", true: "green" }} // Use red for 'PENDING', green for 'FINISHED'
-        thumbColor={item.isComplete ? "green" : "white"} // Match thumb color with text
-        ios_backgroundColor="#C1C1C1"
-        onValueChange={() => changeStatus(item.id)}
-        value={item.isComplete}
-      />
-    </View>
+    <RowComponent todo={item} onToggle={changeStatus} />
   );
 
   return (
@@ -79,6 +68,9 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
+
+
 
 const styles = StyleSheet.create({
   container: {
