@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
-import RowComponent from './components/RowComponent';  
+import RowComponent from './components/RowComponent';
 
 let initialTodoList = [];
 
@@ -48,11 +48,17 @@ export default function App() {
           <Text style={styles.deleteButtonText}>🗑️</Text>
         </TouchableOpacity>
       </View>
-      {todoList.length === 0 && <Text style={styles.noTasksText}>You have no tasks.</Text>}
+
+      {todoList.length === 0 &&
+        <Text style={styles.noTasksText} testID='appJSMessageText'>
+          You have no tasks.</Text>
+      }
+
       <FlatList
         data={todoList}
         renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
+        testID='taskFlatList'
       />
       <View style={styles.inputContainer}>
         <TextInput
@@ -60,8 +66,9 @@ export default function App() {
           onChangeText={setTaskName}
           value={taskName}
           placeholder="Enter task name"
+          testID='taskInputBox'
         />
-        <TouchableOpacity style={styles.addButton} onPress={() => addTask(taskName)}>
+        <TouchableOpacity style={styles.addButton} onPress={() => addTask(taskName)} testID='addBtn'>
           <Text style={styles.addButtonText}>ADD TASK</Text>
         </TouchableOpacity>
       </View>
@@ -91,15 +98,15 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   item: {
-    backgroundColor: 'white',  
+    backgroundColor: 'white',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomWidth: 1, 
-    borderBottomColor: '#cccccc',  
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc',
   },
   title: {
     fontSize: 24,

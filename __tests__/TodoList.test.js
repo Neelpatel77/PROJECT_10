@@ -1,7 +1,7 @@
 import { getTodoList, addTask, clearAll, changeStatus } from "../TodoList";
 
-describe("Todo list operations", () => {
-    it("Add function", () => {
+describe("Testing the TaskList logic", () => {
+    it("Add a task", () => {
         addTask("Do homework")
         addTask("Walk the dog")
         expect(getTodoList().length).toBe(2)
