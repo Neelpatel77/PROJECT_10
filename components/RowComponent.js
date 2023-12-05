@@ -5,22 +5,26 @@ const RowComponent = ({ todo, onToggle }) => {
   return (
     <View style={styles.row}>
       <View style={styles.textContainer}>
-        <Text style={styles.id}>{todo.id}</Text>
+        <Text style={styles.id}>{todo.id} - </Text>
         <Text style={styles.name}>{todo.name}</Text>
       </View>
-      <Text
-        style={[
-          styles.status,
-          { color: todo.isComplete ? "green" : "#C1C1C1" },
-        ]}
-      >
-        {todo.isComplete ? "FINISHED" : "PENDING"}
-      </Text>
-      <Switch
-        trackColor={{ false: "#C1C1C1", true: "#32C557" }}
-        onValueChange={() => onToggle(todo.id)}
-        value={todo.isComplete}
-      />
+      <View>
+        <Switch
+          trackColor={{ false: "#C1C1C1", true: "#32C557" }}
+          onValueChange={() => onToggle(todo.id)}
+          value={todo.isComplete}
+        />
+        <View style={styles.toggleLabel}>
+          <Text
+            style={[
+              styles.status,
+              { color: todo.isComplete ? "green" : "#C1C1C1" },
+            ]}
+          >
+            {todo.isComplete ? "FINISHED" : "PENDING"}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -30,25 +34,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 10,
-    paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
+    marginHorizontal: 20,
   },
   textContainer: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   id: {
-    fontWeight: "bold",
-    marginRight: 5,
+    fontSize: 20,
   },
   name: {
     flex: 1,
+    fontSize: 20,
   },
   status: {
     fontSize: 16,
-    marginRight: 10,
+  },
+  toggleLabel: {
+    marginLeft: -300,
+    alignItems: "flex-start",
   },
 });
 
