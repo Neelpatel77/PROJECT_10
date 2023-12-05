@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: "#007AFF",
-    paddingHorizontal: 6,
+    paddingHorizontal: 8,
     borderRadius: 5,
     height: 45,
     justifyContent: "center",
@@ -159,6 +159,6 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 17,
   },
 });

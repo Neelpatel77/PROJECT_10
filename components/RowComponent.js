@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   toggleLabel: {
+    flex: 1,
     marginLeft: -300,
     alignItems: "flex-start",
   },
