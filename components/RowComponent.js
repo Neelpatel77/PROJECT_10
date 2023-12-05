@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Switch } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Switch } from "react-native";
 
 const RowComponent = ({ todo, onToggle }) => {
   return (
@@ -8,37 +8,39 @@ const RowComponent = ({ todo, onToggle }) => {
         <Text style={styles.id}>{todo.id}</Text>
         <Text style={styles.name}>{todo.name}</Text>
       </View>
-      <Text style={[styles.status, { color: todo.isComplete ? 'green' : '#C1C1C1' }]}>
-        {todo.isComplete ? 'FINISHED' : 'PENDING'}
+      <Text
+        style={[
+          styles.status,
+          { color: todo.isComplete ? "green" : "#C1C1C1" },
+        ]}
+      >
+        {todo.isComplete ? "FINISHED" : "PENDING"}
       </Text>
       <Switch
-  trackColor={{ false: "#C1C1C1", true: "#32C557" }}  
-  thumbColor={todo.isComplete ? "#32C557" : "#C1C1C1"}  
-  onValueChange={() => onToggle(todo.id)}
-  value={todo.isComplete}
-/>
+        trackColor={{ false: "#C1C1C1", true: "#32C557" }}
+        onValueChange={() => onToggle(todo.id)}
+        value={todo.isComplete}
+      />
     </View>
   );
 };
 
- 
-
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
+    borderBottomColor: "#cccccc",
   },
   textContainer: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   id: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginRight: 5,
   },
   name: {
