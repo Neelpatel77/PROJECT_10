@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
-import RowComponent from './components/RowComponent';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  FlatList,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  StatusBar,
+} from "react-native";
+import RowComponent from "./components/RowComponent";
+import { AntDesign } from "@expo/vector-icons";
 
 let initialTodoList = [];
 
 export default function App() {
   const [todoList, setTodoList] = useState(initialTodoList);
-  const [taskName, setTaskName] = useState('');
+  const [taskName, setTaskName] = useState("");
 
   const addTask = (name) => {
-    const newId = todoList.length > 0 ? todoList[todoList.length - 1].id + 1 : 1;
+    const newId =
+      todoList.length > 0 ? todoList[todoList.length - 1].id + 1 : 1;
     const newTask = { id: newId, name: name, isComplete: false };
     setTodoList([...todoList, newTask]);
-    setTaskName('');
+    setTaskName("");
   };
 
   const deleteAllTasks = () => {
@@ -21,7 +33,7 @@ export default function App() {
       "Are you sure you want to delete all tasks?",
       [
         { text: "Cancel", style: "cancel" },
-        { text: "OK", onPress: () => setTodoList([]) }
+        { text: "OK", onPress: () => setTodoList([]) },
       ]
     );
   };
@@ -45,20 +57,21 @@ export default function App() {
       <View style={styles.header}>
         <Text style={styles.headerText}>Todo List</Text>
         <TouchableOpacity onPress={deleteAllTasks}>
-          <Text style={styles.deleteButtonText}>🗑️</Text>
+          <AntDesign name="delete" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
-      {todoList.length === 0 &&
-        <Text style={styles.noTasksText} testID='appJSMessageText'>
-          You have no tasks.</Text>
-      }
+      {todoList.length === 0 && (
+        <Text style={styles.noTasksText} testID="appJSMessageText">
+          You have no tasks.
+        </Text>
+      )}
 
       <FlatList
         data={todoList}
         renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-        testID='taskFlatList'
+        keyExtractor={(item) => item.id.toString()}
+        testID="taskFlatList"
       />
       <View style={styles.inputContainer}>
         <TextInput
@@ -66,9 +79,13 @@ export default function App() {
           onChangeText={setTaskName}
           value={taskName}
           placeholder="Enter task name"
-          testID='taskInputBox'
+          testID="taskInputBox"
         />
-        <TouchableOpacity style={styles.addButton} onPress={() => addTask(taskName)} testID='addBtn'>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => addTask(taskName)}
+          testID="addBtn"
+        >
           <Text style={styles.addButtonText}>ADD TASK</Text>
         </TouchableOpacity>
       </View>
@@ -76,20 +93,17 @@ export default function App() {
   );
 }
 
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   headerText: {
     fontSize: 24,
@@ -98,48 +112,53 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   item: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
+    borderBottomColor: "#cccccc",
   },
   title: {
     fontSize: 24,
   },
   status: {
     fontSize: 20,
-    color: 'green',
+    color: "green",
   },
   noTasksText: {
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: "center",
     marginVertical: 20,
   },
   inputContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
+    flexDirection: "row",
+    paddingHorizontal: 14,
     paddingVertical: 20,
   },
   input: {
     flex: 1,
-    height: 40,
-    margin: 12,
+    height: 45,
+    marginRight: 12,
     borderWidth: 1,
+    borderColor: "#808080",
+    borderRadius: 5,
+    backgroundColor: "#E5E4E2",
     padding: 10,
   },
   addButton: {
-    backgroundColor: 'blue',
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#007AFF",
+    paddingHorizontal: 8,
+    borderRadius: 5,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
   },
   addButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontSize: 17,
   },
 });
